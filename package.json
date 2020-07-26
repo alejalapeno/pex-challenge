@@ -1,0 +1,20 @@
+{
+  "name": "pex-challenge",
+  "version": "1.0.0",
+  "description": "FE challenge for Pex",
+  "main": "src/transformErrors.js",
+  "private": true,
+  "engines": {
+    "node": "8.4.0"
+  },
+  "dependencies": {
+    "husky": "2.7.0",
+    "immutable": "4.0.0-rc.12"
+  },
+  "devDependencies": {
+    "mocha": "6.2.2"
+  },
+  "scripts": {
+    "test": "mocha"
+  }
+}
