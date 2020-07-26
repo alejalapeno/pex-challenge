@@ -11,7 +11,7 @@
     "immutable": "4.0.0-rc.12"
   },
   "devDependencies": {
-	"husky": "2.7.0",
+    "husky": "2.7.0",
     "mocha": "6.2.2"
   },
   "scripts": {
