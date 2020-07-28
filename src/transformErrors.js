@@ -1,4 +1,3 @@
-const {OrderedSet} = require('immutable');
 const {makeSentence} = require('./makeSentence');
 const {isSentenceList} = require('./checks');
 const {pipe} = require('./pipe');
