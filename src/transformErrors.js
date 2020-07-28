@@ -1,6 +1,6 @@
 const {OrderedSet} = require('immutable');
 const {makeSentence} = require('./makeSentence');
-const {isSentenceList, isWalkable} = require('./checks');
+const {isSentenceList} = require('./checks');
 const {pipe} = require('./pipe');
 
 function transformErrors(errors, preserveNestingKeys) {
@@ -10,25 +10,14 @@ function transformErrors(errors, preserveNestingKeys) {
 }
 
 function reduceFlat(field) {
-	function collectErrors(allErrors, currentError) {
-		return allErrors.add(isWalkable(currentError)
-			? reduceFlat(currentError)
-			: currentError);
-	}
-
-	return field.reduce(collectErrors, OrderedSet()).flatten(true);
+	return field.toSet().flatten();
 }
 
 function mapNested(field) {
 	return field.map((fieldValue) => {
-		if (isSentenceList(fieldValue)) {
-			return makeSentence(fieldValue);
-		}
-		if (isWalkable(fieldValue)) {
-			return mapNested(fieldValue);
-		}
-
-		return fieldValue;
+		return isSentenceList(fieldValue)
+			? makeSentence(fieldValue)
+			: mapNested(fieldValue);
 	});
 }
 
